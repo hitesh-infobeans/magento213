@@ -1,0 +1,98 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13 Jan, 2017, 12:48:33 PM
+    Author     : hitesh
+*/ 
+
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
+div.panel.show {
+    display: block;
+} 
+
+.faq-list .ui-accordion .ui-accordion-header {
+    cursor: pointer;
+    display: block;
+    font-size: 100%;
+    margin: 2px 0 0;
+    padding: 0.5em 0.5em 0.5em 0.7em;
+    position: relative;
+}
+.faq-list .ui-icon  {
+    
+    background-image: url("@{baseDir}images/ui-icons_444444_256x240.png");
+}
+
+
+.faq-list .ui-state-active .ui-icon {
+    background-image: url("@{baseDir}images/ui-icons_ffffff_256x240.png");
+}
+
+.faq-list .ui-icon {
+    height: 16px;
+    width: 16px;
+}
+.faq-list .ui-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-top: -0.25em;
+    overflow: hidden;
+    position: relative;
+    text-indent: -99999px;
+    vertical-align: middle;
+}
+
+
+.faq-list .ui-state-default {
+    background: #f6f6f6 none repeat scroll 0 0;
+    border: 1px solid #c5c5c5;
+    color: #454545;
+    font-weight: normal;
+}
+
+.faq-list .ui-state-active  {
+    background: #007fff none repeat scroll 0 0;
+    border: 1px solid #003eff;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+.faq-list h3 {
+    font-size: 20px;
+    line-height: normal;
+    margin-bottom:0px;
+    margin-top: 0px; 
+    
+}
+
+.faq-category li {
+    
+    border: 1px solid #ccc;
+    height: 24px;
+    list-style: outside none none;
+    padding: 6px;
+}
+
+.faq-category li:hover{
+    background: #eee none repeat scroll 0 0;
+}
+
+.faq-category li.active{
+    background: #eee none repeat scroll 0 0;
+}
+
+.faq-category li.active a{
+    color:#000;
+}
+
+.faq-list pager .current{
+   background:#ccc; 
+}

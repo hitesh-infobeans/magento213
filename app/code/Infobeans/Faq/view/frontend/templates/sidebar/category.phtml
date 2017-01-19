@@ -1,0 +1,86 @@
+<?php
+/**
+ * Faq Categories List
+ *
+ * @var $block \Infobeans\Faq\Block\Sidebar\Category
+ */
+?>
+<?php $items = $this->getCategories(); ?>
+
+<?php if (count($items)) {  
+    
+    ?>
+
+<div class="faq-category"> 
+    
+	<ul>
+	<?php
+		$i = 0;
+		$first = true;
+		foreach($items as $item) { 
+                    if($i==0)
+                    {
+                        $currentCategory=$item->getId();
+                    }
+                    
+                    ?>
+			 
+            <li id="cat<?php echo $item->getId();?>" <?php echo ($i == 0)?'class="active"':''?> >
+                        <a href="javascript:;" onclick="fetchFaq('<?php echo $item->getId();?>',1)">
+			    <?php echo $block->escapeHtml($item->getCategoryName()) ?>
+			</a>
+	        <?php
+		$i++;	 
+		}
+   	?>
+	</ul>
+</div>
+<input type="hidden" id="current-category" value="<?php echo $currentCategory;?>" />
+<?php } ?>
+<script>
+ function fetchFaq(categoryId,page){
+        require([
+            'jquery',
+            'jquery/ui'
+        ], function($){
+            
+            var accordionOptions = {
+                header: '.event',
+                collapsible: true,
+                active: false,
+                animate: {duration: 150}
+            };
+            
+            
+            $.ajax({
+                    url: "<?php echo $this->getBaseUrl(); ?>faq/ajax/index",
+                    method: 'POST',
+                    showLoader: true,
+                    data: { 
+                        category_id: categoryId,
+                        page:page,                        
+                    },
+                    success: function (response) {
+                    $('.faq-category li').removeClass('active');
+                    $('.faq-list .pager .page').removeClass('current');
+                    $('.page'+page).addClass('current');
+                    $("#accordion").accordion("destroy"); 
+                    $('#faq-list').html(response);
+                    $('#current-category').val(categoryId);    
+                     $("#accordion").accordion({ 
+                        heightStyle: "content"
+                     });
+                     
+                     $('#cat'+categoryId).addClass('active');
+                    }
+                });
+            
+        });
+
+    }
+    
+    
+    
+    
+    
+</script>    
