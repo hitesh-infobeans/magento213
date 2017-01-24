@@ -145,15 +145,15 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
     {
         $catId = $this->getRequest()->getPost('category_id');
         
-          $page=($this->getRequest()->getPost('page'))? $this->getRequest()->getPost('page') : 1;
+        $page=($this->getRequest()->getPost('page'))? $this->getRequest()->getPost('page') : 1;
         //get values of current limit
-         $pageSize=($this->getRecordPerPage())? $this->getRecordPerPage() : 3;
+        $pageSize=($this->getRecordPerPage())? $this->getRecordPerPage() : 10;
 
         
         if(!$catId)
         {
            $categoryCollection = $this->_categoryCollection 
-                ->setOrder('sort_order')
+                ->setOrder('sort_order','asc')
                 ->getFirstItem();
            $catId=$categoryCollection->getId();
         }   
@@ -165,9 +165,9 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
                 ->addFilter('category_id',$catId)    
                 ->addOrder(
                     FaqInterface::CREATION_TIME,
-                    FaqCollection::SORT_ORDER_DESC
+                    FaqCollection::SORT_ORDER_ASC
                 )
-                ->setPageSize(3)
+                ->setPageSize($pageSize)
                 ->setCurPage($page)
                 ->load();    
             

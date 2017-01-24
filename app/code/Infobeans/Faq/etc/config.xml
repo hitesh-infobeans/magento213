@@ -5,9 +5,10 @@
             <faq_section>
                 <general>
                     <page_title>FAQ</page_title>
-                    <meta_title>FAQ</meta_title>
-                    <page_title>FAQ</page_title>
-                    <page_title>FAQ</page_title>
+                    <meta_title>Frequently asked questions</meta_title>
+                    <meta_keyword>FAQ</meta_keyword>
+                    <meta_description>Frequently asked questions</meta_description>
+                    <record_per_page>10</record_per_page>
                 </general>
             </faq_section>
         </default>

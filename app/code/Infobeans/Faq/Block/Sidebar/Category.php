@@ -24,9 +24,9 @@ class Category extends \Magento\Framework\View\Element\Template
     public function getCategories()
     { 
         $k = 'categories';
-        if (!$this->hasDat($k)) {
+        if (!$this->hasData($k)) {
             $array = $this->_categoryCollection 
-                ->setOrder('sort_order');  
+                ->setOrder('sort_order','asc');  
             $this->setData($k, $array);
         }
 

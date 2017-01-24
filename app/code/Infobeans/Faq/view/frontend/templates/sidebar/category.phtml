@@ -62,12 +62,12 @@
                     },
                     success: function (response) {
                     $('.faq-category li').removeClass('active');
-                    $('.faq-list .pager .page').removeClass('current');
-                    $('.page'+page).addClass('current');
+                    $('.pager .item').removeClass('current');                    
+                    $('.pager .page'+page).addClass('current');
                     $("#accordion").accordion("destroy"); 
                     $('#faq-list').html(response);
                     $('#current-category').val(categoryId);    
-                     $("#accordion").accordion({ 
+                    $("#accordion").accordion({ 
                         heightStyle: "content"
                      });
                      

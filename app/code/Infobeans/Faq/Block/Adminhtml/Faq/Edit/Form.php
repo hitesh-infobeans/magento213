@@ -101,7 +101,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             $model->setData('is_active', '1');
         }
         
-        $categories[] = ['label' => __('Please select'), 'value' => 0];
+        $categories[] = ['label' => __('Please select'), 'value' => ""];
         $collection = $this->_categoryCollection
             ->setOrder('sort_order');
            
@@ -123,6 +123,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Category'),
                 'values' => $categories, 
                 'style' => 'width:100%',
+                'required' => true,
             ]
         );
         

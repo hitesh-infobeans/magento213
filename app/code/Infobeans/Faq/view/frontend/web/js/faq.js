@@ -9,9 +9,10 @@ require([
             'jquery/ui'
         ], function ($) {
     $(document).ready(function () {
-         $( "#accordion" ).accordion(); 
+        $("#accordion").accordion({ 
+                heightStyle: "content"
+        });
          
     });
-    
      
 });
