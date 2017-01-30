@@ -147,8 +147,8 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
         
         $page=($this->getRequest()->getPost('page'))? $this->getRequest()->getPost('page') : 1;
         //get values of current limit
-        $pageSize=($this->getRecordPerPage())? $this->getRecordPerPage() : 10;
-
+         $pageSize=($this->getRecordPerPage())? $this->getRecordPerPage() : 10;
+ 
         
         if(!$catId)
         {

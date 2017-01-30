@@ -24,6 +24,7 @@
                 </field>
                 <field id="record_per_page" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Show Records per page</label>
+                      <validate>validate-digits</validate>   
                     <comment><![CDATA[Default value is 10]]></comment>
                 </field> 
             </group>

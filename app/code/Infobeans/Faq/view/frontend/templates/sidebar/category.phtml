@@ -26,7 +26,7 @@
                     ?>
 			 
             <li id="cat<?php echo $item->getId();?>" <?php echo ($i == 0)?'class="active"':''?> >
-                        <a href="javascript:;" onclick="fetchFaq('<?php echo $item->getId();?>',1)">
+                        <a class="disableClick" href="javascript:;" onclick="fetchFaq('<?php echo $item->getId();?>',1)">
 			    <?php echo $block->escapeHtml($item->getCategoryName()) ?>
 			</a>
 	        <?php
@@ -43,15 +43,9 @@
             'jquery',
             'jquery/ui'
         ], function($){
-            
-            var accordionOptions = {
-                header: '.event',
-                collapsible: true,
-                active: false,
-                animate: {duration: 150}
-            };
-            
-            
+          
+            if($('#current-category').val()==categoryId) return;
+           
             $.ajax({
                     url: "<?php echo $this->getBaseUrl(); ?>faq/ajax/index",
                     method: 'POST',
@@ -61,11 +55,11 @@
                         page:page,                        
                     },
                     success: function (response) {
-                    $('.faq-category li').removeClass('active');
-                    $('.pager .item').removeClass('current');                    
-                    $('.pager .page'+page).addClass('current');
+                    $('.faq-category li').removeClass('active');                    
                     $("#accordion").accordion("destroy"); 
                     $('#faq-list').html(response);
+                    $('.pager .item').removeClass('current');                    
+                    $('.pager .page'+page).addClass('current');
                     $('#current-category').val(categoryId);    
                     $("#accordion").accordion({ 
                         heightStyle: "content"
