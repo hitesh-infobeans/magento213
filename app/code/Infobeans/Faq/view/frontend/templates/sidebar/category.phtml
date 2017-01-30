@@ -26,7 +26,7 @@
                     ?>
 			 
             <li id="cat<?php echo $item->getId();?>" <?php echo ($i == 0)?'class="active"':''?> >
-                        <a class="disableClick" href="javascript:;" onclick="fetchFaq('<?php echo $item->getId();?>',1)">
+                        <a  href="javascript:;" onclick="fetchFaq('<?php echo $item->getId();?>',1)">
 			    <?php echo $block->escapeHtml($item->getCategoryName()) ?>
 			</a>
 	        <?php
@@ -42,9 +42,7 @@
         require([
             'jquery',
             'jquery/ui'
-        ], function($){
-          
-            if($('#current-category').val()==categoryId) return;
+        ], function($){ 
            
             $.ajax({
                     url: "<?php echo $this->getBaseUrl(); ?>faq/ajax/index",
@@ -55,7 +53,8 @@
                         page:page,                        
                     },
                     success: function (response) {
-                    $('.faq-category li').removeClass('active');                    
+                    $('.faq-category li').removeClass('active');   
+                    $('.faq-category li a').removeClass('disableClick');   
                     $("#accordion").accordion("destroy"); 
                     $('#faq-list').html(response);
                     $('.pager .item').removeClass('current');                    
@@ -66,6 +65,7 @@
                      });
                      
                      $('#cat'+categoryId).addClass('active');
+                     $('#cat'+categoryId+' a').addClass('disableClick');
                     }
                 });
             
